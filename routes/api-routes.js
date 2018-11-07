@@ -10,7 +10,7 @@ const translate = new Translate({
 });
 
 module.exports = app => {
-    const io = require('../config/webSockets/socket.js')(app);
+    const io = require('../models/config/webSockets/socket')(app);
 
     app.post('/api/record/:language/:username', (req, res, next) => {
         const username = req.params.username;

@@ -48,7 +48,7 @@ app.use('/static', express.static(path.join(__dirname, 'public/build/static')));
 
 require('./routes/api-routes.js')(app);
 require('./routes/auth-routes.js')(app, passport);
-require('./config/passport.js')(passport, database);
+require('./models/config/passport')(passport, database);
 
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, 'public', 'build', 'index.html'));
