@@ -10,20 +10,14 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            factorAuth: ''
+            currentUser: ''
         }
     }
 
-    handleFactorAuth = (factorAuth) => {
-        if (factorAuth) {
-            return (
-                <span>true</span>
-            );
-        }
-
-        return (
-            <span>false</span>
-        );
+    componentDidMount = () => {
+        this.setState({
+            currentUser: this.props.user.username ? `Logged in as: ${this.props.user.username}` : 'You are currently not logged in.'
+        })
     }
 
     handleInputChange = (event) => {
@@ -40,11 +34,7 @@ class Login extends Component {
             password: this.state.password
         }
 
-        this.props.fetchLogin(payload);
-        setTimeout(() => {
-            this.props.history.push('/chainchat');
-            window.location.reload();
-        }, 1000);
+        this.props.fetchLogin(payload, this.props.history);
     }
 
     handleRedirect = (event) => {
@@ -65,6 +55,7 @@ class Login extends Component {
                             <div className='card'>
                                 <div className='card-header font-weight-bold'>Login</div>
                                 <div className='card-body'>
+                                    <div className='text-center font-weight-bold' style={{ marginBottom: '2vh'}}>{this.state.currentUser}</div>
                                     <form onSubmit={this.handleSubmit}>
                                         <div className='form-group'>
                                             <input type='text' className='form-control' name='username' placeholder='Username' required='required' value={this.state.username} onChange={this.handleInputChange} />
@@ -78,6 +69,9 @@ class Login extends Component {
                                             </button>
                                             <button type="button" className='btn btn-light  mr-3' onClick={this.handleRedirect} name='/forgot'>
                                                 Forgot Password
+                                            </button>
+                                            <button type="button" className='btn btn-light  mr-3' onClick={this.handleRedirect} name='/chainchat'>
+                                                Chain Chat
                                             </button>
                                             <button type='submit' value="Submit" className='btn btn-primary login-btn'>Login</button>
                                         </div>

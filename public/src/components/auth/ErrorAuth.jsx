@@ -18,10 +18,10 @@ export default class Confirmation extends Component {
                     <div className="col-sm-6 m-auto">
                         <div className="card">
                             <div class="card-header text-center font-weight-bold">
-                                Verification Status
+                                Error
                             </div>
                             <div className="card-body text-center">
-                                <p className="card-text">Verified!</p>
+                                <p className="card-text">Error on authentication. Please contact support.</p>
                                 <button className="btn btn-primary" name='/' onClick={this.handleRedirect}>Login</button>
                             </div>
                         </div>

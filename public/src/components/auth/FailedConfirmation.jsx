@@ -21,7 +21,7 @@ export default class Confirmation extends Component {
                                 Verification Status
                             </div>
                             <div className="card-body text-center">
-                                <p className="card-text">Verified!</p>
+                                <p className="card-text">Not Verified!</p>
                                 <button className="btn btn-primary" name='/' onClick={this.handleRedirect}>Login</button>
                             </div>
                         </div>
